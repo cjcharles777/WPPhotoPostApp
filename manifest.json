@@ -2,12 +2,10 @@
   "name": "Hello World!",
   "description": "My first Chrome App.",
   "version": "0.1",
-  "app": {
     "background": {
-     "persistent": false,
+      "persistent": false,
       "scripts": ["background.js"]
-    }
-  },
+    },
   "permissions": [
     "contextMenus"
   ],
