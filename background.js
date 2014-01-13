@@ -5,8 +5,8 @@
 // The onClicked callback function.
 
 chrome.runtime.onInstalled.addListener(function() {
-	  var context = "selection";
-  var title = "Google for Selected Text";
+	  var context = 'image';
+  var title = "WP Picture Post";
   var id = chrome.contextMenus.create({"title": title, "contexts":[context],
                                          "id": "context" + context});  
 });
@@ -16,7 +16,7 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
 
 // The onClicked callback function.
 function onClickHandler(info, tab) {
-  var sText = info.selectionText;
-  var url = "https://www.google.com/search?q=" + encodeURIComponent(sText);  
+  var sText = info.srcUrl;
+  var url = sText;  
   window.open(url, '_blank');
  };
