@@ -1,7 +1,7 @@
 // Copyright (c) 2012 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
+// @ http://smus.com/oauth2-chrome-extensions/
 // The onClicked callback function.
 
 
@@ -12,7 +12,8 @@ var oauth = ChromeExOAuth.initBackgroundPage({
   'consumer_key': '2a91c3d998a7924',
   'consumer_secret': 'd6eabe90616fe7c77323413000d0d0848bab8792'
 });
-oauth.authorize(function() {
+
+oauth.authorize(function() { 
 	
 });
 

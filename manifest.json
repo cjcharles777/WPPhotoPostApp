@@ -6,7 +6,6 @@
       "persistent": false,
       "scripts": [     "js/chrome_ex_oauthsimple.js",
       					"js/chrome_ex_oauth.js",
-      					"js/onload.js",
       					"js/background.js"
 				 ]
     },
@@ -14,8 +13,11 @@
     "contextMenus", 
 	  "tabs",
 	  "https://api.imgur.com/oauth2/addclient",
+	  "http://api.imgur.com/oauth2/addclient",
 	  "https://api.imgur.com/oauth2/authorize",
-	  "https://api.imgur.com/oauth2/token"
+	  "https://api.imgur.com/oauth2/token", 
+	  "http://imgur.com/signin", 
+	  "https://imgur.com/signin"
   ],
   "icons": { "16": "calculator-16.png", "128": "calculator-128.png" },
   "manifest_version": 2
