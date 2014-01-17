@@ -3,11 +3,11 @@ OAuth2.adapter('imgur', {
    * @return {URL} URL to the page that returns the authorization code
    */
   authorizationCodeURL: function(config) {
-    return 'https://api.imgur.com/oauth2/authorize?' +
+    return ('https://api.imgur.com/oauth2/authorize?' +
       'client_id={{CLIENT_ID}}&' +
       'response_type=code')
         .replace('{{CLIENT_ID}}', config.clientId)
-        .replace('{{REDIRECT_URI}}', this.redirectURL(config));';
+        .replace('{{REDIRECT_URI}}', this.redirectURL(config));
   },
 
   /**
