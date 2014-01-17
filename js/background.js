@@ -10,14 +10,15 @@ var imgurAuth = new OAuth2('imgur', {
   client_secret: 'f48b829200dd1b624a0ba62183758ef4628d3e87'
   });
 
-imgurAuth.authorize(function() {
-  // Ready for action
-});
+
 chrome.runtime.onInstalled.addListener(function() {
-	  var context = 'image';
-  var title = "WP Picture Post";
-  var id = chrome.contextMenus.create({"title": title, "contexts":[context],
+	var context = 'image';
+  	var title = "WP Picture Post";
+  	var id = chrome.contextMenus.create({"title": title, "contexts":[context],
                                          "id": "context" + context});  
+	imgurAuth.authorize(function() {
+  // Ready for action
+	});
 });
 
 // add click event
@@ -33,6 +34,7 @@ function onClickHandler(info, tab) {
  
 function saveImagetoImgur(url)
 {
+
 	var fd = new FormData(); 
     fd.append("image", url); // Append the file
     var xhr = new XMLHttpRequest(); // Create the XHR (Cross-Domain XHR FTW!!!) Thank you sooooo much imgur.com

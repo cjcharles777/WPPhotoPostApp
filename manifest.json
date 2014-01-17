@@ -16,15 +16,19 @@
 	  "https://api.imgur.com/oauth2/authorize",
 	  "https://api.imgur.com/oauth2/token", 
 	  "http://imgur.com/signin", 
-	  "https://imgur.com/signin"
+	  "https://imgur.com/signin", 
+	  "http://imgur.com/robots.txt*"
   ],
   "content_scripts": [
   {
-    "matches": ["http://www.imgur.com/robots.txt*"],
+    "matches": ["http://imgur.com/robots.txt*"],
     "js": ["oauth2/oauth2_inject.js"],
     "run_at": "document_start"
   }
 	],
+	"web_accessible_resources": [
+		"oauth2/oauth2.html"
+	  ],
   "icons": { "16": "calculator-16.png", "128": "calculator-128.png" },
   "manifest_version": 2
 }

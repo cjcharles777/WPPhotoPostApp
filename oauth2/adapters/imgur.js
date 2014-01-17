@@ -15,7 +15,7 @@ OAuth2.adapter('imgur', {
    * script into
    */
   redirectURL: function(config) {
-    return 'http://www.imgur.com/robots.txt';
+    return 'http://imgur.com/robots.txt';
   },
 
   /**
@@ -58,6 +58,7 @@ OAuth2.adapter('imgur', {
    * refreshToken {String} and expiresIn {Int}
    */
   parseAccessToken: function(response) {
+  	var parsedResponse = JSON.parse(response);
     return {
       accessToken: parsedResponse.access_token,
       refreshToken: parsedResponse.refresh_token,
