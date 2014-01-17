@@ -5,18 +5,14 @@
 // The onClicked callback function.
 
 
-var oauth = ChromeExOAuth.initBackgroundPage({
-  'request_url': 'https://api.imgur.com/oauth2/addclient',
-  'authorize_url': 'https://api.imgur.com/oauth2/authorize',
-  'access_url': 'https://api.imgur.com/oauth2/token',
-  'consumer_key': '2a91c3d998a7924',
-  'consumer_secret': 'd6eabe90616fe7c77323413000d0d0848bab8792'
-});
+var imgurAuth = new OAuth2('imgur', {
+  client_id: '885c3b459c09e5e',
+  client_secret: 'f48b829200dd1b624a0ba62183758ef4628d3e87'
+  });
 
-oauth.authorize(function() { 
-	
+imgurAuth.authorize(function() {
+  // Ready for action
 });
-
 chrome.runtime.onInstalled.addListener(function() {
 	  var context = 'image';
   var title = "WP Picture Post";
@@ -30,7 +26,22 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
 // The onClicked callback function.
 function onClickHandler(info, tab) {
   var sText = info.srcUrl;
-  var url = sText;  
+  var url = sText;
+  saveImagetoImgur(url)  ;
   window.open(url, '_blank');
  };
  
+function saveImagetoImgur(url)
+{
+	var fd = new FormData(); 
+    fd.append("image", url); // Append the file
+    var xhr = new XMLHttpRequest(); // Create the XHR (Cross-Domain XHR FTW!!!) Thank you sooooo much imgur.com
+	xhr.open("POST", "https://api.imgur.com/3/upload"); // Boooom!
+	 xhr.onload = function() 
+	 {  
+        var link = JSON.parse(xhr.responseText).data.link;
+       
+    };
+	xhr.setRequestHeader('Authorization', 'Bearer ' + imgurAuth.getAccessToken());
+	 xhr.send(fd);
+}

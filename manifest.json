@@ -4,8 +4,7 @@
   "version": "0.1",
     "background": {
       "persistent": false,
-      "scripts": [     "js/chrome_ex_oauthsimple.js",
-      					"js/chrome_ex_oauth.js",
+      "scripts": [     "oauth2/oauth2.js",
       					"js/background.js"
 				 ]
     },
@@ -19,6 +18,13 @@
 	  "http://imgur.com/signin", 
 	  "https://imgur.com/signin"
   ],
+  "content_scripts": [
+  {
+    "matches": ["http://www.imgur.com/robots.txt*"],
+    "js": ["oauth2/oauth2_inject.js"],
+    "run_at": "document_start"
+  }
+	],
   "icons": { "16": "calculator-16.png", "128": "calculator-128.png" },
   "manifest_version": 2
 }
